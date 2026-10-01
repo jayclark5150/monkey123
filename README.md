@@ -25,15 +25,14 @@ python3 passgen.py
 - **Windows / macOS**: the python.org installer includes Tkinter.
 - **Linux (Debian/Ubuntu)**: `sudo apt install python3-tk`  (Fedora: `sudo dnf install python3-tkinter`)
 
-## Build a standalone app (optional)
-Build on each target OS (PyInstaller does not cross-compile):
+## Build a double-click desktop app
+See [BUILDING.md](BUILDING.md) for step-by-step instructions for Windows, macOS and Linux.
+Quick version (run on each target OS):
 
 ```
 pip install pyinstaller
 pyinstaller --onefile --windowed --name Monkey123 --add-data "wordlist.txt:." passgen.py
 ```
-
-(PyInstaller 6+ accepts `:` as the separator on all platforms; older versions need `;` on Windows.) Output is in `dist/`.
 
 ## Changelog
 
