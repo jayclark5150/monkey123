@@ -14,13 +14,13 @@ SYMBOLS = "!@#$%^&*()-_=+[]{};:,.<>?/~"
 _rng = secrets.SystemRandom()
 
 
-def _resource_dir() -> Path:
+def resource_dir() -> Path:
     # When bundled with PyInstaller, data files live in sys._MEIPASS.
     return Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
 
 
 def load_wordlist() -> list[str]:
-    path = _resource_dir() / "wordlist.txt"
+    path = resource_dir() / "wordlist.txt"
     words = [w.strip() for w in path.read_text(encoding="utf-8").splitlines() if w.strip()]
     if not words:
         raise RuntimeError(f"Wordlist is empty: {path}")

@@ -5,7 +5,7 @@ from tkinter import ttk
 
 import generator as gen
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 SEPARATORS = {
     "Hyphen ( - )": "-",
@@ -196,8 +196,13 @@ class App(ttk.Frame):
 
 
 def main():
-    root = tk.Tk()
+    # className sets the Linux WM_CLASS so the dock matches the .desktop launcher.
+    root = tk.Tk(className="Monkey123")
     root.title("Monkey123")
+    try:
+        root.iconphoto(True, tk.PhotoImage(file=gen.resource_dir() / "assets" / "icon.png"))
+    except tk.TclError:
+        pass  # Icon is cosmetic; run without it if the file is missing.
     root.minsize(460, 360)
     App(root)
     root.mainloop()

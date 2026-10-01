@@ -1,6 +1,6 @@
 # Monkey123
 
-Version 1.1.0
+Version 1.2.0
 
 A small cross-platform desktop app (Windows, macOS, Linux) for generating random
 passwords and passphrases. Uses Python's `secrets` module (cryptographically secure RNG)
@@ -27,14 +27,19 @@ python3 passgen.py
 
 ## Build a double-click desktop app
 See [BUILDING.md](BUILDING.md) for step-by-step instructions for Windows, macOS and Linux.
-Quick version (run on each target OS):
+Quick version for Linux (on Windows use `assets/icon.ico`, on macOS `assets/icon.icns`):
 
 ```
 pip install pyinstaller
-pyinstaller --onefile --windowed --name Monkey123 --add-data "wordlist.txt:." passgen.py
+pyinstaller --onefile --windowed --name Monkey123 --icon assets/icon.png \
+  --add-data "wordlist.txt:." --add-data "assets/icon.png:assets" passgen.py
 ```
 
 ## Changelog
+
+### 1.2.0
+- Added the Monkey123 icon (`assets/`) for the app window, taskbar, Linux launcher,
+  and Windows/macOS builds
 
 ### 1.1.0
 - Added a color-coded strength meter beside the Generate button
